@@ -1,3 +1,16 @@
-<p>
-  home works!
-</p>
+<h4>Friends</h4>
+<ul>
+  <ng-container *ngFor="let user of users">
+    <li *ngIf="user.friend">
+      {{user.nick}}{{user.email}}
+    </li>
+  </ng-container>
+</ul>
+<h4>Not Friend</h4>
+<ul>
+  <ng-container *ngFor="let user of users">
+    <li *ngIf="!user.friend">
+      {{user.nick}}{{user.email}}
+    </li>
+  </ng-container>
+</ul>
