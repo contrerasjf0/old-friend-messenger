@@ -2,7 +2,9 @@
 <ul>
   <ng-container *ngFor="let user of users">
     <li *ngIf="user.friend">
-      {{user.nick}}{{user.email}}
+      <a routerLink="/conversation/{{user.uid}}">
+          {{user.nick}}{{user.email}}
+      </a>
     </li>
   </ng-container>
 </ul>
@@ -10,7 +12,9 @@
 <ul>
   <ng-container *ngFor="let user of users">
     <li *ngIf="!user.friend">
-      {{user.nick}}{{user.email}}
+        <a routerLink="/conversation/{{user.uid}}">
+          {{user.nick}}{{user.email}}
+        </a>
     </li>
   </ng-container>
 </ul>
