@@ -22,4 +22,45 @@
     max-width: 100px;
   }
 
+
+  #imgStatus{
+    width: 50px;
+  }
+  
+  #homeContainer {
+    background-image: url(/assets/img/msnbg.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  
+  #whiteBorderClassBox{
+    border: 2px solid rgba(255,255,255, .75);
+    padding: 8px;
+  }
+  
+  .homeHeadContainer{
+    background-color: rgba(255,255,255, .50);
+  
+  }
+  
+  #homeAvatarPicture{
+    max-width: 100px;
+  }
+  
+  .whiteContainerPadded{
+    padding: 15px;
+    background-color: #feffff;
+  }
+  
+  img.icon{
+    width: 30px;
+  }
+  
+  .disblo{
+    display: block !important;
+  }
+  
+  .marbo5{
+    margin-bottom: 5px;
+  }
   
