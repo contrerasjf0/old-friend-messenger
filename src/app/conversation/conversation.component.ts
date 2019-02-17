@@ -11,7 +11,6 @@ import { UserService } from '../services/user.service';
 export class ConversationComponent implements OnInit {
 
   userId: any;
-  users: User[];
   user: User;
 
   constructor(private activatedRouter: ActivatedRoute,
@@ -19,10 +18,10 @@ export class ConversationComponent implements OnInit {
 
     this.userId = this.activatedRouter.snapshot.params['uid'];
 
-    this.users = this.userService.getUsers();
-
-    this.user=this.users.find( (record) => {
-      return record.uid == this.userId;
+    this.userService.getUserById(this.userId).valueChanges().subscribe((data: User) => {
+          this.user= data;
+        }, (error) => {
+          console.log(error);
     });
     console.log(this.user);
 

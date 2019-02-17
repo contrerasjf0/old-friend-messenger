@@ -13,7 +13,11 @@ export class HomeComponent implements OnInit {
   users: User[];
 
   constructor(private userService: UserService) {
-    this.users = this.userService.getUsers();
+    this.userService.getUsers().valueChanges().subscribe((data: User[]) => {
+        this.users = data;
+      }, (error) => {
+        console.log(error);
+      });
   }
 
   ngOnInit() {

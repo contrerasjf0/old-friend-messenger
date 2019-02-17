@@ -28,10 +28,10 @@
       </div>
     </div>
     <hr/>
-    <b>Amigos ({{users.length}} / {{users.length}})</b>
+    <b *ngIf="users" >Amigos ({{users.length}} / {{users.length}})</b>
     <div *ngFor="let user of users | search: query" class="d-block m-1">
         <span routerLink="/conversation/{{user.uid}}">
-          <img class="ico-estatus" src="assets/img/logo_live_{{user.status}}.png" alt="Estatus de Contacto"/>
+          <img class="ico-estatus" src="assets/img/logo_live_{{(user.status)? user.status : 'offline'}}.png" alt="Estatus de Contacto"/>
           <b>{{user.nick}}</b> - {{user.subnick || 'No subnick'}}
           <small>{{user.email}}</small>
         </span>
