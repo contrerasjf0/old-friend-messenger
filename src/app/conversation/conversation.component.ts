@@ -18,6 +18,7 @@ export class ConversationComponent implements OnInit {
 
   conversation_id: string;
   textMessage: string;
+  conversation: any[];
 
   constructor(private activatedRoute: ActivatedRoute,private userService: UserService, private conversationService: ConversationService, private authenticationService: AuthenticationService) {
 
@@ -33,6 +34,7 @@ export class ConversationComponent implements OnInit {
                   this.friend = data;
                   const ids = [this.user.uid, this.friend.uid].sort();
                   this.conversation_id = ids.join('|');
+                  this.getConversation();
                 }, (error) => {
                   console.log(error);
               });
@@ -51,6 +53,32 @@ export class ConversationComponent implements OnInit {
     this.conversationService.createConversation(message).then(() => {
       this.textMessage = '';
     });
+  }
+
+  getConversation() {
+    this.conversationService.getConversation(this.conversation_id).valueChanges().subscribe((data) => {
+      this.conversation = data;
+      console.log(data);
+      this.conversation.forEach((message) => {
+        if (!message.seen) {
+          message.seen = true;
+          this.conversationService.editConversation(message);
+          const audio = new Audio('assets/sound/new_message.m4a');
+          audio.play();
+        }
+      });
+      console.log(data);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  getUserNickById(id) {
+    if (id === this.friend.uid) {
+      return this.friend.nick;
+    } else {
+      return this.user.nick;
+    }
   }
 
   ngOnInit() {

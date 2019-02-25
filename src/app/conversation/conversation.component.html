@@ -11,10 +11,18 @@
       <b>Mensaje Personal</b>
       <hr>
       <div class="msg">
-        <div class="msgMe"> <img class="img-fluid" src="assets/img/generic_avatar.png" alt="Avatar generico"><span>Hola</span></div>
+
+
+        <div class="msgMe"  *ngFor="let m of conversation"> 
+          <img class="img-fluid" src="assets/img/generic_avatar.png" alt="Avatar generico">
+          <b>{{getUserNickById(m.sender)}}:</b>
+          <span>{{m.text}}</span>
+        </div>
+
+        <!-- <div class="msgMe"> <img class="img-fluid" src="assets/img/generic_avatar.png" alt="Avatar generico"><span>Hola</span></div>
         <div class="msgYou"> <span>Hola</span><img class="img-fluid" src="assets/img/generic_avatar.png" alt="Avatar generico"></div>
         <div class="msgMe"> <img class="img-fluid" src="assets/img/generic_avatar.png" alt="Avatar generico"><span>Como tas</span></div>
-        <div class="msgYou"> <span>bien tú</span><img class="img-fluid" src="assets/img/generic_avatar.png" alt="Avatar generico"></div>
+        <div class="msgYou"> <span>bien tú</span><img class="img-fluid" src="assets/img/generic_avatar.png" alt="Avatar generico"></div> -->
       </div>
     </div>
   </div>
