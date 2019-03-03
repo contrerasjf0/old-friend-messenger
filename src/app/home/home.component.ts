@@ -21,6 +21,12 @@ export class HomeComponent implements OnInit {
   constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router, private modalService: NgbModal, private requestsService: RequestsService) {
     this.userService.getUsers().valueChanges().subscribe((data: User[]) => {
         this.users = data;
+
+        if (this.user.friends) {
+          this.user.friends = Object.values(this.user.friends);
+          console.log(this.user);
+        }
+        
       }, (error) => {
         console.log(error);
       });
@@ -46,10 +52,13 @@ export class HomeComponent implements OnInit {
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    }, (reason) => {
+
+    }, 
+    (reason) => {
+
     });
   }
-  
+
   sendRequest() {
     const request = {
       timestamp: Date.now(),
